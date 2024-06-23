@@ -1,12 +1,8 @@
 import pytest
 from selenium import webdriver
-
 from pages.main_page import MainPage
 from pages.enter_page import EnterPage
-
 from data import UserData
-
-
 
 
 def _get_driver(name):
@@ -24,6 +20,7 @@ def driver(request):
     driver.get(UserData.MAIN_PAGE_BURGER_URL)
     yield driver
     driver.quit()
+
 
 @pytest.fixture(scope='function')
 def popup(driver):

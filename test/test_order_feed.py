@@ -1,16 +1,13 @@
 from conftest import driver, popup
 from pages.main_page import MainPage
-from pages.enter_page import EnterPage
-from pages.forgot_pass_page import ForgotPassPage
 from pages.personal_account_page import PersonalAccount
-from data import UserData
-from pages.rec_pass_page import RecPassPage
 from pages.order_feed_page import OrderFeedPage
 import allure
 
 
 class TestOrderFeed:
 
+    @allure.title('Проверка открытия окна с деталями, если кликнуть на заказ.')
     def test_click_order_opened_details_window_success(self, driver):
         user = MainPage(driver)
         user.click_order_feed_button()
@@ -19,6 +16,7 @@ class TestOrderFeed:
         user.wait_for_details_window_in_order_feed_opened()
         assert user.check_for_details_window_in_order_feed_is_displayed()
 
+    @allure.title('Проверка отображения заказов пользователя из раздела «История заказов» на странице «Лента заказов».')
     def test_user_order_from_history_order_displayed_in_order_feed_success(self, driver, popup):
         user = MainPage(driver)
         user.add_n200_bun_to_basket()
@@ -35,7 +33,7 @@ class TestOrderFeed:
         order_feed_last_order = user.get_text_from_last_user_order()
         assert history_page_nummer == order_feed_last_order
 
-
+    @allure.title('Проверка увеличения счётчика "Выполнено за всё время" при создании нового заказа.')
     def test_all_time_counter_increase_after_new_order_created_success(self, driver, popup):
         user = MainPage(driver)
         user.click_order_feed_button()
@@ -52,6 +50,7 @@ class TestOrderFeed:
         new_counter = user.get_all_time_counter()
         assert new_counter > old_counter
 
+    @allure.title('Проверка увеличения счётчика "Выполнено за сегодня" при создании нового заказа.')
     def test_today_counter_increase_after_new_order_created_success(self, driver, popup):
         user = MainPage(driver)
         user.click_order_feed_button()
@@ -67,6 +66,7 @@ class TestOrderFeed:
         new_counter = user.get_today_counter()
         assert new_counter > old_counter
 
+    @allure.title('Проверка отображения номера заказа в разделе "В работе" после создании нового заказа.')
     def test_in_work_counter_is_displayed_after_new_order_created_success(self, driver, popup):
         user = MainPage(driver)
         user.add_n200_bun_to_basket()

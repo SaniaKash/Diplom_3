@@ -9,27 +9,10 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    # Ожидание отображения элемента
-    def visibility_of_element_located(self, locator):  # Ожидание отображения элемента
-        return WebDriverWait(self.driver, 100).until(expected_conditions.visibility_of_element_located(locator))
-
-    def move_to(self, locator):
-        element = self.visibility_of_element_located(locator)
-        action = ActionChains(self.driver)
-        return action.move_to_element(element).click().perform()
-
-    # Ожидание кликабельности элемента
-    def clickable_of_element_located(self, locator):
-        return WebDriverWait(self.driver, 100).until(expected_conditions.element_to_be_clickable(locator))
-
     # Клик элемента
     def click_element(self, locator):  # Клик на элемент
         element = self.clickable_of_element_located(locator)
         return element.click()
-
-    # Проверка отображения элемента
-    def check_element_displayed(self, locator):
-        return self.presence_of_element_detected(locator).is_displayed()
 
     # Отправить значение в поля
     def input_text(self, locator, text):
@@ -40,17 +23,33 @@ class BasePage:
     def current_url(self):
         return self.driver.current_url
 
+    # Ожидание кликабельности элемента
+    def clickable_of_element_located(self, locator):
+        return WebDriverWait(self.driver, 100).until(expected_conditions.element_to_be_clickable(locator))
+
+    # Ожидание отображения элемента
+    def visibility_of_element_located(self, locator):  # Ожидание отображения элемента
+        return WebDriverWait(self.driver, 100).until(expected_conditions.visibility_of_element_located(locator))
+
+    # Ожидание отображения URL
     def visibility_of_url_located(self, url):
         return WebDriverWait(self.driver, 100).until(expected_conditions.url_to_be(url))
 
+    # Ожидание присутствия элемента
     def presence_of_element_detected(self, locator):
         return WebDriverWait(self.driver, 100).until(expected_conditions.presence_of_element_located(locator))
 
+    # Проверка отображения элемента
+    def check_element_displayed(self, locator):
+        return self.visibility_of_element_located(locator).is_displayed()
+
+    # Перенос элемента
     def seletools_drag_and_drop_element(self, locator1, locator2):
         source = self.visibility_of_element_located(locator1)
         target = self.presence_of_element_detected(locator2)
         return drag_and_drop(self.driver, source, target)
 
+    # Получить текст
     def get_text(self, locator):
         return self.presence_of_element_detected(locator).text
 
