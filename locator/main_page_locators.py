@@ -21,7 +21,8 @@ class MainPageLocators:
     BURGER_CONSTRUCTOR_BASKET = By.XPATH, '//*[text()="Перетяните булочку сюда (низ)"]'
     DONE_ORDER_PAGE = By.XPATH, '//*[@class="Modal_modal_opened__3ISw4 Modal_modal__P3_V5"]'
     N200_BUN = By.XPATH, '//*[text()="Краторная булка N-200i"]'
-    ORDER_NUMMER = ''
+    ORDER_IMG = By.XPATH, '//div[@class="Modal_modal__P3_V5"]'
+    ORDER_NUMMER = By.XPATH, '//*[contains(@class,"title_shadow")]'
 
 
 

@@ -78,4 +78,8 @@ class MainPage(BasePage):
                                                     MainPageLocators.BURGER_CONSTRUCTOR_BASKET)
 
     def get_order_numer(self):
-        return self.get_text()
+        count = self.get_text(MainPageLocators.ORDER_NUMMER)
+        return count
+
+    def wait_for_order_img_loaded(self):
+        return self.presence_of_element_detected(MainPageLocators.ORDER_IMG)

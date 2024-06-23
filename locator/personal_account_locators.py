@@ -8,3 +8,4 @@ class PersonaAccountLocators:
     ORDER_HISTORY_PAGE = By.XPATH, '//*[contains(@class,"OrderHistory_orderHistory")]'
     PERSONAL_ACCOUNT_EXIT_BUTTON = By.XPATH, "//*[text()='Выход']"
     MAIN_PAGE_COUNTER = By.XPATH, '//h2[contains(@class,"title_shadow")]'
+    LAST_ORDER_NUMMER = By.XPATH, '//li[last()]//p[contains(text(), "#")]'

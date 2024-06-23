@@ -29,3 +29,9 @@ class PersonalAccount(BasePage):
 
     def click_personal_account_exit_button(self):
         return self.click_element(PersonaAccountLocators.PERSONAL_ACCOUNT_EXIT_BUTTON)
+
+    def scroll_to_last_order_history_page(self):
+        return self.execute_script(PersonaAccountLocators.LAST_ORDER_NUMMER)
+
+    def get_text_last_order(self):
+        return self.get_text(PersonaAccountLocators.LAST_ORDER_NUMMER)

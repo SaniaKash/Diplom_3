@@ -1,4 +1,4 @@
-from conftest import driver
+from conftest import driver, popup
 from pages.main_page import MainPage
 from pages.enter_page import EnterPage
 from pages.forgot_pass_page import ForgotPassPage
@@ -48,14 +48,7 @@ class TestBasicFunctionality:
         user.add_souse_spicy_to_basket()
         assert user.check_change_souse_spicy_counter()
 
-    def test_click_place_order_logged_user_new_order_success(self, driver):
-        user = MainPage(driver)
-        user.wait_for_main_page_located()
-        user.click_personal_account_button()
-        user = EnterPage(driver)
-        user.input_email_text()
-        user.input_password_text()
-        user.click_enter_button()
+    def test_click_place_order_logged_user_new_order_success(self, driver, popup):
         user = MainPage(driver)
         user.wait_for_make_order_located()
         user.click_make_order_button()

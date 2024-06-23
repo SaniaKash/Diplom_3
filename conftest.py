@@ -1,6 +1,11 @@
 import pytest
 from selenium import webdriver
+
+from pages.main_page import MainPage
+from pages.enter_page import EnterPage
+
 from data import UserData
+
 
 
 
@@ -19,5 +24,17 @@ def driver(request):
     driver.get(UserData.MAIN_PAGE_BURGER_URL)
     yield driver
     driver.quit()
+
+@pytest.fixture(scope='function')
+def popup(driver):
+    user = MainPage(driver)
+    user.wait_for_main_page_located()
+    user.click_personal_account_button()
+    user = EnterPage(driver)
+    user.input_email_text()
+    user.input_password_text()
+    user.click_enter_button()
+    user = MainPage(driver)
+    user.wait_for_personal_account_button_located()
 
 

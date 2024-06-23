@@ -54,5 +54,11 @@ class BasePage:
     def get_text(self, locator):
         return self.presence_of_element_detected(locator).text
 
+    # Скролл страницы до элемента
+    def execute_script(self, locator):
+        element = self.visibility_of_element_located(locator)
+        return self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+
 
 
