@@ -25,19 +25,19 @@ class BasePage:
 
     # Ожидание кликабельности элемента
     def clickable_of_element_located(self, locator):
-        return WebDriverWait(self.driver, 100).until(expected_conditions.element_to_be_clickable(locator))
+        return WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(locator))
 
     # Ожидание отображения элемента
     def visibility_of_element_located(self, locator):  # Ожидание отображения элемента
-        return WebDriverWait(self.driver, 100).until(expected_conditions.visibility_of_element_located(locator))
+        return WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(locator))
 
     # Ожидание отображения URL
     def visibility_of_url_located(self, url):
-        return WebDriverWait(self.driver, 100).until(expected_conditions.url_to_be(url))
+        return WebDriverWait(self.driver, 5).until(expected_conditions.url_to_be(url))
 
     # Ожидание присутствия элемента
     def presence_of_element_detected(self, locator):
-        return WebDriverWait(self.driver, 100).until(expected_conditions.presence_of_element_located(locator))
+        return WebDriverWait(self.driver, 5).until(expected_conditions.presence_of_element_located(locator))
 
     # Проверка отображения элемента
     def check_element_displayed(self, locator):

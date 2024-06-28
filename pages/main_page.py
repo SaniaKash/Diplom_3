@@ -101,6 +101,14 @@ class MainPage(BasePage):
         return self.seletools_drag_and_drop_element(MainPageLocators.N200_BUN,
                                                     MainPageLocators.BURGER_CONSTRUCTOR_BASKET)
 
+    @allure.step('Создаем заказ с булкой "Н200".')
+    def make_complete_order_n200_bun(self):
+        self.click_constructor_button()
+        self.add_n200_bun_to_basket()
+        self.click_make_order_button()
+        self.click_close_button_ingredients()
+        self.click_order_feed_button()
+
     @allure.step('Получаем номер заказа.')
     def get_order_numer(self):
         count = self.get_text(MainPageLocators.ORDER_NUMMER)

@@ -23,7 +23,7 @@ class ForgotPassPage(BasePage):
 
     @allure.step('Вводим эмейл.')
     def input_email(self):
-        return self.input_text(ForgotPassPageLocators.INPUT_EMAIL, UserData.EMAIL)
+        return self.input_text(ForgotPassPageLocators.INPUT_EMAIL_FORGOT_PASS, UserData.EMAIL)
 
     @allure.step('Нажимаем кнопку "Восстановить пароль".')
     def click_recover_butt(self):
